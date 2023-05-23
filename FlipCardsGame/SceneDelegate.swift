@@ -20,16 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let mainScreenViewController = MainScreenViewController()
         let navigationController = UINavigationController(rootViewController: mainScreenViewController)
-        
-        
-        guard let _ = (scene as? UIWindowScene) else { return }
-        
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = LaunchScreenViewController()
         window?.makeKeyAndVisible()
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             UIView.transition(with: self.window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 self.window?.rootViewController = navigationController

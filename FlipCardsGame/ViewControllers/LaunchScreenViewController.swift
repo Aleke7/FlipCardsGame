@@ -10,7 +10,7 @@ import SnapKit
 
 class LaunchScreenViewController: UIViewController {
     
-    private lazy var label: UILabel = {
+    private lazy var appName: UILabel = {
         let label = UILabel()
         label.text = "Flip Cards"
         label.textColor = .label
@@ -18,7 +18,7 @@ class LaunchScreenViewController: UIViewController {
         return label
     }()
     
-    private lazy var imageView: UIImageView = {
+    private lazy var appImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "AppIcon")
         imageView.layer.cornerRadius = 10
@@ -27,9 +27,9 @@ class LaunchScreenViewController: UIViewController {
     }()
     
     private lazy var stackView: UIStackView = {
-       let stackView = UIStackView()
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(label)
+        let stackView = UIStackView()
+        stackView.addArrangedSubview(appImageView)
+        stackView.addArrangedSubview(appName)
         stackView.spacing = 8
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -39,13 +39,14 @@ class LaunchScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0xFC, green: 0xA6, blue: 0x68)
-        view.addSubview(stackView)
         makeConstraints()
     }
     
     private func makeConstraints() {
         
-        imageView.snp.makeConstraints { make in
+        view.addSubview(stackView)
+        
+        appImageView.snp.makeConstraints { make in
             make.width.height.equalTo(150)
         }
         
